@@ -45,7 +45,7 @@ function SignIn() {
                 document.getElementById('passwordError').innerHTML = 'password required'
             }else{
 
-                const response = await axios.post(`${API_URL}/login`,userInfo);
+                const response = await axios.post(`${API_URL}/voter/login`,userInfo);
 
                 if(response.status === 200){
 

@@ -12,7 +12,7 @@ function Logout() {
   const logOut = async () => {
     try {
       // axios.defaults.withCredentials = true;
-      const response = await axios.post(`${API_URL}/logOut`)
+      const response = await axios.post(`${API_URL}/voter/logOut`)
       setUserLogin(false);
       window.location.reload();
       
