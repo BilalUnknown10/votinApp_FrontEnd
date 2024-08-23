@@ -83,7 +83,7 @@ function Signup() {
             
         } catch (error) {
             // console.log('Error from form submit function',error);
-            alert(error.response.data.error)
+            alert(error.response.data)
              
         }
        
