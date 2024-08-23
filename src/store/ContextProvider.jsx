@@ -56,7 +56,7 @@ function ContextProvider({children}) {
           
           
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
         
       }
     }
