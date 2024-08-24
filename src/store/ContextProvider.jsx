@@ -7,7 +7,7 @@ function ContextProvider({children}) {
     const [userLogin, setUserLogin] = useState(false);
     const [userName, setUserName] = useState('');
 
-    const API_URL = `vote-app-ten.vercel.app`
+    const API_URL = `http://localhost:3000/voter`
 
     const [jipCount, setJipCount] = useState('');
     const [ptiCount, setPtiCount] = useState('');
@@ -19,7 +19,7 @@ function ContextProvider({children}) {
     const checkUserLogin = async () => {
       try {
         axios.defaults.withCredentials = true;
-        const response = await axios.get(`vote-app-ten.vercel.app/voter/checkUserLoggedIn`);
+        const response = await axios.get(`${API_URL}/checkUserLoggedIn`);
         
         if(response.status === 200){
           setUserLogin(true)
@@ -27,7 +27,7 @@ function ContextProvider({children}) {
         }
 
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
         
       }
     };
