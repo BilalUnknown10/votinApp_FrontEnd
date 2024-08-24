@@ -7,7 +7,7 @@ function ContextProvider({children}) {
     const [userLogin, setUserLogin] = useState(false);
     const [userName, setUserName] = useState('');
 
-    const API_URL = `https://vote-app-sage.vercel.app/voter`
+    const API_URL = `http://localhost:3000/voter`
 
     const [jipCount, setJipCount] = useState('');
     const [ptiCount, setPtiCount] = useState('');
@@ -24,12 +24,11 @@ function ContextProvider({children}) {
         if(response.status === 200 ){
           setUserLogin(true)
           setUserName(response.data)
-          console.log(response)
         }
 
       } catch (error) {
         console.log(error.response.data);
-        console.log(error)
+        // console.log(error)
         
       }
     };
@@ -38,27 +37,27 @@ function ContextProvider({children}) {
       try {
         axios.defaults.withCredentials = true
        
+        const pti_response = await axios.get(`${API_URL}/count/PTI`);
         setPtiCount(pti_response.data);
-        const pti_response = await axios.get(`${API_URL}/voter/count/PTI`);
 
-          setJuiCount(jui_response.data);
-          const jui_response = await axios.get(`${API_URL}/voter/count/JUI`);
+        const jui_response = await axios.get(`${API_URL}/count/JUI`);
+        setJuiCount(jui_response.data);
 
-          setAnpCount(anp_response.data);
-          const anp_response = await axios.get(`${API_URL}/voter/count/ANP`);
+        const anp_response = await axios.get(`${API_URL}/count/ANP`);
+        setAnpCount(anp_response.data);
 
-          setPppCount(PPP_response.data);
-          const PPP_response = await axios.get(`${API_URL}/voter/count/PPP`);
+        const PPP_response = await axios.get(`${API_URL}/count/PPP`);
+        setPppCount(PPP_response.data);
 
-          setJipCount(Jip_response.data);
-          const Jip_response = await axios.get(`${API_URL}/voter/count/JIP`);
+        const Jip_response = await axios.get(`${API_URL}/count/JIP`);
+        setJipCount(Jip_response.data);
 
-          setPlmNCount(pmlN_response.data);  
-          const pmlN_response = await axios.get(`${API_URL}/voter/count/PML-N`);
+        const pmlN_response = await axios.get(`${API_URL}/count/PML-N`);
+        setPlmNCount(pmlN_response.data);  
           
           
       } catch (error) {
-        console.log(error.response);
+        console.log(error);
         
       }
     }
