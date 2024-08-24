@@ -20,7 +20,6 @@ function ContextProvider({children}) {
       try {
         axios.defaults.withCredentials = true;
         const response = await axios.get(`vote-app-ten.vercel.app/voter/checkUserLoggedIn`);
-        console.log(response)
         
         if(response.status === 200){
           setUserLogin(true)
@@ -28,7 +27,7 @@ function ContextProvider({children}) {
         }
 
       } catch (error) {
-        console.log(error.response);
+        console.log(error);
         
       }
     };
