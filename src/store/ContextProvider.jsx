@@ -24,6 +24,7 @@ function ContextProvider({children}) {
         if(response.status === 200){
           setUserLogin(true)
           setUserName(response.data)
+          console.log(response)
         }
 
       } catch (error) {
