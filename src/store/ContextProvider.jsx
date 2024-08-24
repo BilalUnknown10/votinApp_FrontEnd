@@ -17,11 +17,11 @@ function ContextProvider({children}) {
     const [pmlNCount, setPlmNCount] = useState('');
 
     const checkUserLogin = async () => {
+      axios.defaults.withCredentials = true;
       try {
-        axios.defaults.withCredentials = true;
         const response = await axios.get(`${API_URL}/checkUserLoggedIn`);
         
-        if(response.status === 200){
+        if(response.status === 200 ){
           setUserLogin(true)
           setUserName(response.data)
           console.log(response)
@@ -29,6 +29,7 @@ function ContextProvider({children}) {
 
       } catch (error) {
         console.log(error.response.data);
+        console.log(error)
         
       }
     };
