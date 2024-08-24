@@ -54,10 +54,10 @@ function SignIn() {
                         password : ""
                     });
 
-                    alert('User logged in successfully');
                     setUserLogin(true);
+                    alert('User logged in successfully');
                     navigate('/');
-                    window.location.reload()
+                    // window.location.reload()
 
                 };
             };
