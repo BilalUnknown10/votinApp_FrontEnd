@@ -59,6 +59,7 @@ function Signup() {
             }else{
                 axios.defaults.withCredentials = true;
                 const response = await axios.post(`${API_URL}/registration`, userInfo);
+                console.log(response)
 
                  if(response.status === 200){
                     setUserLogin(true)
