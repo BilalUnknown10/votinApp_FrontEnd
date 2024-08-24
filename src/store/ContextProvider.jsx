@@ -7,7 +7,7 @@ function ContextProvider({children}) {
     const [userLogin, setUserLogin] = useState(false);
     const [userName, setUserName] = useState('');
 
-    const API_URL = `http://localhost:3000/voter`
+    const API_URL = `https://vote-app-sage.vercel.app//voter`
 
     const [jipCount, setJipCount] = useState('');
     const [ptiCount, setPtiCount] = useState('');
