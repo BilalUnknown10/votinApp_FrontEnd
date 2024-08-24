@@ -65,7 +65,7 @@ function SignIn() {
         } catch (error) {
             // console.log('Error from form submit function',error);
             alert(error.response.data)
-            console.log(error)
+            // console.log(error)
         };
     };
 
