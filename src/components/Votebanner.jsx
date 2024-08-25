@@ -27,16 +27,14 @@ function Votebanner({partyName,chairman,leaderImage,partyFlag,totalVotes}) {
         if(ask === true){
 
             axios.defaults.withCredentials = true;
-            const response = await axios.post(`${API_URL}/polevote`,voteDetail);
+            const response = await axios.post(`${API_URL}/voter/polevote`,voteDetail);
             alert("Vote Pole successfully");
-            window.location.reload()
 
        }else{
         alert('Choose one options of the following');
        }
         } catch (error) {
             alert(error.response.data);
-            navigate('/signin')
         }
         
     }
