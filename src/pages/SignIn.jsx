@@ -54,7 +54,7 @@ function SignIn() {
                         password : ""
                     });
                     
-                    alert('User logged in successfully');
+                    alert(response.data);
                     navigate('/');
                     setUserLogin(true);
                     // window.location.reload()
