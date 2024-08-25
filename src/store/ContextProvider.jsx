@@ -17,8 +17,8 @@ function ContextProvider({children}) {
     const [pmlNCount, setPlmNCount] = useState('');
 
     const checkUserLogin = async () => {
-      axios.defaults.withCredentials = true;
       try {
+        axios.defaults.withCredentials = true
         
         const response = await axios.get(`${API_URL}/voter/checkUserLoggedIn`);
         console.log(response)
