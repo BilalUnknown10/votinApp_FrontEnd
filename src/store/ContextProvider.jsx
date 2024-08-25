@@ -20,7 +20,7 @@ function ContextProvider({children}) {
       try {
         axios.defaults.withCredentials = true
         
-        const response = await axios.get(`${API_URL}/voter/checkUerLoggedIn`);
+        const response = await axios.get(`${API_URL}/voter/checkUserLoggedIn`);
         console.log(response)
         if(response.status === 200 ){
           setUserLogin(true)
