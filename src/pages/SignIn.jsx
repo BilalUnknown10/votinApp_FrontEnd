@@ -53,11 +53,10 @@ function SignIn() {
                         cardNumber : "",
                         password : ""
                     });
-                    await setUserLogin(true);
-
+                    
                     alert('User logged in successfully');
                     navigate('/');
-                    console.log(userLogin)
+                    setUserLogin(true);
                     // window.location.reload()
 
                 };
