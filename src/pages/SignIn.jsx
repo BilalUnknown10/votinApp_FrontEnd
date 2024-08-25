@@ -49,11 +49,11 @@ function SignIn() {
 
                 if(response.status === 200){
 
-                    setUserLogin(true);
                     setUerInfo({
                         cardNumber : "",
                         password : ""
                     });
+                    await setUserLogin(true);
 
                     alert('User logged in successfully');
                     navigate('/');
