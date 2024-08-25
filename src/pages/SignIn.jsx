@@ -57,6 +57,7 @@ function SignIn() {
 
                     alert('User logged in successfully');
                     navigate('/');
+                    console.log(userLogin)
                     // window.location.reload()
 
                 };
