@@ -49,12 +49,12 @@ function SignIn() {
 
                 if(response.status === 200){
 
+                    setUserLogin(true);
                     setUerInfo({
                         cardNumber : "",
                         password : ""
                     });
 
-                    setUserLogin(true);
                     alert('User logged in successfully');
                     navigate('/');
                     // window.location.reload()
