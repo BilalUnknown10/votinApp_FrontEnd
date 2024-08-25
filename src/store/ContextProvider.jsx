@@ -22,11 +22,11 @@ function ContextProvider({children}) {
         console.log(userLogin);
         
         const response = await axios.get(`${API_URL}/voter/checkUserLoggedIn`);
-        
-        if(response.status === 200 ){
+        console.log(response)
+        // if(response.status === 200 ){
           setUserLogin(true)
           setUserName(response.data)
-        }
+        // }
 
       } catch (error) {
         console.log(error.response.data);
