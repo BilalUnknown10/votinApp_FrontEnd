@@ -10,7 +10,7 @@ function ContextProvider({children}) {
 
     const isLoggedIn = !!token
   
-    const API_URL = "http://localhost:3000"
+    const API_URL = process.env.API_URL
 
     const authentication = async (jwtToken) => {
       return localStorage.setItem('token',jwtToken)
