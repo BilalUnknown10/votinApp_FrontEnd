@@ -10,7 +10,7 @@ function ContextProvider({children}) {
 
     const isLoggedIn = !!token
   
-    const API_URL = process.env.API_URL
+    const API_URL = `https://vote-app-sage.vercel.app`
 
     const authentication = async (jwtToken) => {
       return localStorage.setItem('token',jwtToken)
