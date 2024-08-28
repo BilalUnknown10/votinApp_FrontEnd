@@ -16,8 +16,9 @@ function Signup() {
         phoneNumber : "",
         password : ""
     });
-    const {setUserLogin, API_URL} = useContext(UserContext)
     const navigate = useNavigate()
+
+    const {API_URL, authentication} = useContext(UserContext)
 
 
 
@@ -60,9 +61,8 @@ function Signup() {
                 axios.defaults.withCredentials = true;
                 const response = await axios.post(`${API_URL}/voter/registration`, userInfo);
                 
-
                  if(response.status === 200){
-                    setUserLogin(true)
+
                      setUerInfo({
                          name : "",
                          email : "",
@@ -71,11 +71,10 @@ function Signup() {
                          password : ""
                         });
                         
-                        alert('User registered successfully');
-
+                        alert(response.data.message);
+                        authentication(response.data.token)
                         navigate('/')
-
-                        // window.location.reload()
+                        window.location.reload();
 
                  }
            
@@ -83,7 +82,7 @@ function Signup() {
             
             
         } catch (error) {
-            // console.log('Error from form submit function',error);
+            console.log('Error from form submit function',error);
             alert(error.response.data)
              
         }

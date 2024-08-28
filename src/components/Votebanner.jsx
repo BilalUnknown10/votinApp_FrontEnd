@@ -4,31 +4,43 @@ import UserContext from '../store/UserContext';
 import { useNavigate } from 'react-router-dom';
 
 
-function Votebanner({partyName,chairman,leaderImage,partyFlag,totalVotes}) {
+function Votebanner({partyName,chairman,leaderImage,partyFlag}) {
    
     const [voteDetail, setVoteDetail] = useState({
         name : chairman,
         partyName : partyName
     });
+    const [voteCount, setVoteCount] = useState('')
 
-    const {userLogin, API_URL} = useContext(UserContext);
+ 
+
+    const {API_URL, token, isLoggedIn} = useContext(UserContext);
     
     const navigate = useNavigate();
 
     const poleVote = async () => {
         try {
 
-            // if(userLogin !== true){
-            //     navigate('/signin')
-            // }
-
             const ask = confirm(`Are you sure vote for ${partyName}`)
+            
         
         if(ask === true){
 
-            axios.defaults.withCredentials = true;
-            const response = await axios.post(`${API_URL}/voter/polevote`,voteDetail);
-            alert("Vote Pole successfully");
+            if(isLoggedIn){
+                
+                axios.defaults.withCredentials = true;
+                const response = await axios.post(`${API_URL}/voter/polevote`,voteDetail,{
+                    headers : {
+                        "Content-Type" : 'application/json',
+                        'Authorization' : `Bearer ${token}`
+                    }
+                });
+                alert("Vote Pole successfully");
+                count()
+            }else{
+                alert("UnAuthorized request")
+                navigate('/signin')
+            }
 
        }else{
         alert('Choose one options of the following');
@@ -39,6 +51,20 @@ function Votebanner({partyName,chairman,leaderImage,partyFlag,totalVotes}) {
         
     }
     
+    
+    
+ const count = async () => {
+    const respose = await axios.get(`${API_URL}/voter/count/${partyName}`)
+    setVoteCount(respose.data)
+ }
+
+ 
+
+ useEffect( () => {
+    count()
+ })
+
+
 
   return (
     <div className=' bg-slate-400 ml-6 mr-6 mt-14 rounded-xl xl:w-[500px]'>
@@ -58,7 +84,7 @@ function Votebanner({partyName,chairman,leaderImage,partyFlag,totalVotes}) {
 
             <div className=' font-mono font-extrabold sm:text-3xl'>
                 <h1>Chairman : {chairman}</h1>
-                <p>Total Votes : {totalVotes}</p>
+                <p>Total Votes : {voteCount}</p>
             </div>
 
             <div className=' text-right mt-8'>

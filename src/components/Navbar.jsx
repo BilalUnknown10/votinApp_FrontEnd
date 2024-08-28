@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 import UserContext from '../store/UserContext';
@@ -9,8 +9,9 @@ import UserContext from '../store/UserContext';
 function Navbar() {
   const [show, setShow] = useState(true);
 
-  const {userLogin, userName} = useContext(UserContext);
+  const {isLoggedIn,user} = useContext(UserContext);
 
+ 
 
 
   const showNavbar = () => {
@@ -30,7 +31,7 @@ function Navbar() {
     <div className=' bg-green-800 p-6 text-white'>
       <div className=' sm:text-2xl font-semibold tracking-widest flex justify-between'>
         <div>
-            {userLogin ? <h1>{userName}</h1> : <h1>Voting Application</h1>}
+            {isLoggedIn ? <h1>{user}</h1> : <h1>Voting Application</h1>}
         </div>
         
        <div className=' text-end'>
@@ -45,7 +46,7 @@ function Navbar() {
               <Link to={'/'}>Home</Link>
             </li>
 
-            {userLogin ?
+            {isLoggedIn ?
 
              <li className=' mr-6 list-none'>
               <Link to={'/logout'}>LogOut</Link>

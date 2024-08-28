@@ -4,77 +4,42 @@ import axios from 'axios'
 
 function ContextProvider({children}) {
 
-    const [userLogin, setUserLogin] = useState(false);
-    const [userName, setUserName] = useState('');
+   
+    const [token, setToken] = useState(localStorage.getItem('token'));
+    const [user, setUser] = useState('')
 
-    const API_URL = "https://vote-app-chi.vercel.app"
+    const isLoggedIn = !!token
+  
+    const API_URL = "http://localhost:3000"
 
-    const [jipCount, setJipCount] = useState('');
-    const [ptiCount, setPtiCount] = useState('');
-    const [pppCount, setPppCount] = useState('');
-    const [anpCount, setAnpCount] = useState('');
-    const [juiCount, setJuiCount] = useState('');
-    const [pmlNCount, setPlmNCount] = useState('');
+    const authentication = async (jwtToken) => {
+      return localStorage.setItem('token',jwtToken)
+    }
 
-    const checkUserLogin = async () => {
+    const checkUser = async () => {
       try {
-        axios.defaults.withCredentials = true
+      
+        if(isLoggedIn){
+          const response = await axios.get(`${API_URL}/voter/user`,{
+          headers : {
+            'Content-Type' : 'application/json',
+            'Authorization' : `Bearer ${token}`
+          }});
+          setUser(response.data);
+        };
         
-        const response = await axios.get(`${API_URL}/voter/checkUserLoggedIn`);
-        console.log(response)
-        if(response.status === 200 ){
-          setUserLogin(true)
-          setUserName(response.data)
-        }
-
-      } catch (error) {
-        console.log(error.response.data);
-        // console.log(error)
-        
-      }
-    };
-
-    const countVotes = async () => {
-      try {
-        axios.defaults.withCredentials = true
-       
-        const pti_response = await axios.get(`${API_URL}/voter/count/PTI`);
-        setPtiCount(pti_response.data);
-
-        const jui_response = await axios.get(`${API_URL}/voter/count/JUI`);
-        setJuiCount(jui_response.data);
-
-        const anp_response = await axios.get(`${API_URL}/voter/count/ANP`);
-        setAnpCount(anp_response.data);
-
-        const PPP_response = await axios.get(`${API_URL}/voter/count/PPP`);
-        setPppCount(PPP_response.data);
-
-        const Jip_response = await axios.get(`${API_URL}/voter/count/JIP`);
-        setJipCount(Jip_response.data);
-
-        const pmlN_response = await axios.get(`${API_URL}/voter/count/PML-N`);
-        setPlmNCount(pmlN_response.data);  
-          
-          
       } catch (error) {
         console.log(error);
         
-      }
-    }
+      };
+    };
 
-    
-    useEffect( () => {
-    countVotes()
-    checkUserLogin()
-  },[userLogin])
-
-
+ useEffect( () => {
+  checkUser()
+ },[user,isLoggedIn,token])
 
   return (
-    <UserContext.Provider value={{
-      userLogin, API_URL, setUserLogin, userName, ptiCount,juiCount,anpCount,jipCount,pppCount,pmlNCount
-      }}>
+    <UserContext.Provider value={{ isLoggedIn, user, setToken,token, API_URL, authentication }}>
       {children}
     </UserContext.Provider>
   )

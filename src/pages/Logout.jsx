@@ -4,18 +4,15 @@ import UserContext from '../store/UserContext'
 import axios from 'axios'
 
 function Logout() {
-
-  const {userLogin, setUserLogin,API_URL} = useContext(UserContext);
   
-
+  const {setToken} = useContext(UserContext)
 
   const logOut = async () => {
     try {
-      axios.defaults.withCredentials = true;
-      const response = await axios.post(`${API_URL}/voter/logOut`)
-      setUserLogin(false);
-      // window.location.reload();
       
+      setToken("");
+      return localStorage.removeItem('token')
+
     } catch (error) {
       console.log(error.response.data);
       
@@ -25,7 +22,7 @@ function Logout() {
       
   useEffect( () => {
     logOut()
-  }, [userLogin])
+  }, [logOut])
     
  
 

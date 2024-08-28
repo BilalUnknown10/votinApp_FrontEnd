@@ -15,8 +15,8 @@ function SignIn() {
     
     const navigate = useNavigate()
 
-    const {setUserLogin,userLogin, API_URL} = useContext(UserContext)
-
+    const {API_URL, authentication} = useContext(UserContext)
+  
 
      const handleInput = (e) => {
         const name = e.target.name;
@@ -46,26 +46,24 @@ function SignIn() {
             }else{
 
                 const response = await axios.post(`${API_URL}/voter/login`,userInfo);
-
+                
                 if(response.status === 200){
-
+                    
                     setUerInfo({
                         cardNumber : "",
                         password : ""
                     });
                     
-                    alert(response.data);
+                    alert('User logged In successfully');
                     navigate('/');
-                    setUserLogin(true);
-                    // window.location.reload()
+                    authentication(response.data);
+                    window.location.reload()
 
                 };
             };
             
         } catch (error) {
-            // console.log('Error from form submit function',error);
-            alert(error.response.data)
-            // console.log(error)
+            alert(error.response.data);
         };
     };
 
