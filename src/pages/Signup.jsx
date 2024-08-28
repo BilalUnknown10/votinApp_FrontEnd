@@ -59,7 +59,13 @@ function Signup() {
                 document.getElementById('passwordError').innerHTML = "password are required"
             }else{
                 axios.defaults.withCredentials = true;
-                const response = await axios.post(`${API_URL}/voter/registration`, userInfo);
+                const response = await axios.post(`${API_URL}/voter/registration`, userInfo,
+                    {
+                        headers : {
+                            'Content-Type' : 'application/json'
+                        }
+                    }
+                );
                 
                  if(response.status === 200){
 
