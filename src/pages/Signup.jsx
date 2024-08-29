@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar.jsx'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import UserContext from '../store/UserContext.js'
+import { toast } from 'react-toastify'
 
 function Signup() {
   
@@ -71,7 +72,7 @@ function Signup() {
                          password : ""
                         });
                         
-                        alert(response.data.message);
+                        toast.success(response.data.message);
                         authentication(response.data.token)
                         navigate('/')
                         window.location.reload();
@@ -84,7 +85,7 @@ function Signup() {
         } catch (error) {
             // console.log('Error from form submit function',error);
             // console.log(error)
-            alert(error.response.data)
+            toast.error(error.response.data)
              
         }
        
@@ -110,7 +111,7 @@ function Signup() {
                         onChange={handleInput}
                         className={'m-5 w-80'}
                     />
-                     <p className=' text-red-500 text-center' id='nameError'></p>
+                     <p className=' text-red-600 ml-6 sm:text-center sm:ml-10' id='nameError'></p>
                 </div>
 
                 <div className=' mr-6 sm:mr-0'>
@@ -124,7 +125,7 @@ function Signup() {
                         onChange={handleInput} 
                         className={'m-4 w-80'}
                     />
-                    <p className=' text-red-500 text-center' id='emailError'></p>
+                    <p className=' text-red-600 ml-6 sm:text-center sm:ml-10' id='emailError'></p>
                 </div>
 
                  <div>
@@ -138,7 +139,7 @@ function Signup() {
                         onChange={handleInput} 
                         className={'m-4 w-80'}
                     />
-                     <p className=' text-red-500 text-center' id='cnicError'></p>
+                     <p className=' text-red-600 ml-6 sm:text-center sm:ml-20' id='cnicError'></p>
                 </div>
                  <div>
                     <Label htmlFor={'phone'} value={'Phone Number :'}/>
@@ -151,7 +152,7 @@ function Signup() {
                         onChange={handleInput} 
                         className={'m-4 w-80'}
                     />
-                    <p className=' text-red-500 text-center' id='phoneError'></p>
+                    <p className=' text-red-600 sm:ml-24 ml-6 sm:text-center' id='phoneError'></p>
                 </div>
                  <div>
                     <Label htmlFor={'password'} value={'Password :'}/>
@@ -164,7 +165,7 @@ function Signup() {
                         onChange={handleInput} 
                         className={'m-4 w-80'}
                     />
-                    <p className=' text-red-500 text-center' id='passwordError'></p>
+                    <p className=' text-red-600 ml-6 sm:text-center sm:ml-20' id='passwordError'></p>
                 </div>
                 <div className='p-5 text-end'>
                     <button type='submit' className=' tracking-widest pr-10 pl-10 pt-3 pb-3 rounded-2xl sm:font-extrabold sm:text-xl hover:text-white hover:bg-green-700 bg-blue-700 font-mono'>

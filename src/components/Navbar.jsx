@@ -22,7 +22,6 @@ function Navbar() {
       }else{
         setShow(true)
         doc.classList.add('hidden');
-        console.log('show are false', show)
       }
       
   }

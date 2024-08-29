@@ -5,6 +5,7 @@ import Input from '../components/Input.jsx'
 import axios from 'axios';
 import UserContext from '../store/UserContext.js';
 import { useNavigate } from 'react-router-dom';
+import {toast} from 'react-toastify'
 
 function SignIn() {
 
@@ -54,7 +55,7 @@ function SignIn() {
                         password : ""
                     });
                     
-                    alert('User logged In successfully');
+                    toast.success('User logged In successfully');
                     navigate('/');
                     authentication(response.data);
                     window.location.reload()
@@ -63,7 +64,7 @@ function SignIn() {
             };
             
         } catch (error) {
-            alert(error.response.data);
+            toast.error(error.response.data);
         };
     };
 
@@ -88,7 +89,7 @@ function SignIn() {
                         onChange={handleInput} 
                         className={'m-4 w-80'}
                     />
-                    <p className=' text-red-500 text-center' id='cnicError'></p>
+                    <p className=' text-red-600 ml-6 sm:text-center sm:ml-16' id='cnicError'></p>
                 </div>
                  <div>
                     <Label htmlFor={'password'} value={'Password :'}/>
@@ -101,7 +102,7 @@ function SignIn() {
                         onChange={handleInput} 
                         className={'m-4 w-80'}
                     />
-                    <p className=' text-red-500 text-center' id='passwordError'></p>
+                    <p className=' text-red-600 ml-6 sm:ml-10 sm:text-center' id='passwordError'></p>
                 </div>
                 <div className='p-5 text-end'>
                     <button type='submit' className=' tracking-widest pr-10 pl-10 pt-3 pb-3 rounded-2xl sm:font-extrabold sm:text-xl hover:text-white hover:bg-green-700 bg-blue-700 font-mono'>

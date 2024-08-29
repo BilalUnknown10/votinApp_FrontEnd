@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import UserContext from '../store/UserContext'
 import axios from 'axios'
-
+import {toast} from 'react-toastify'
 function Logout() {
   
   const {setToken} = useContext(UserContext)
@@ -11,6 +11,7 @@ function Logout() {
     try {
       
       setToken("");
+      toast.success('Logout Successfully');
       return localStorage.removeItem('token')
 
     } catch (error) {

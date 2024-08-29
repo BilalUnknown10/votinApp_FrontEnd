@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios'
 import UserContext from '../store/UserContext';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify'
 
 
 function Votebanner({partyName,chairman,leaderImage,partyFlag}) {
@@ -35,18 +36,18 @@ function Votebanner({partyName,chairman,leaderImage,partyFlag}) {
                         'Authorization' : `Bearer ${token}`
                     }
                 });
-                alert("Vote Pole successfully");
+                toast.success("Vote Pole successfully");
                 count()
             }else{
-                alert("UnAuthorized request")
+                toast.error("UnAuthorized request")
                 navigate('/signin')
             }
 
        }else{
-        alert('Choose one options of the following');
+        toast.warn('Choose one options of the following');
        }
         } catch (error) {
-            alert(error.response.data);
+            toast.error(error.response.data);
         }
         
     }
