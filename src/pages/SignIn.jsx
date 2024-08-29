@@ -24,10 +24,10 @@ function SignIn() {
         const value = e.target.value;
 
         const CnicNumber = document.getElementById('CnicNumber');
-        CnicNumber.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80'
+        CnicNumber.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif mt-1 mb-4 w-80'
 
         const password = document.getElementById('password');
-        password.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80'
+        password.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif mt-1 mb-4 w-80'
 
 
 
@@ -51,13 +51,13 @@ function SignIn() {
             if(userInfo.cardNumber === ""){
                 
                 const CnicNumber = document.getElementById('CnicNumber');
-                CnicNumber.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80 border-red-500'
+                CnicNumber.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif mt-1 mb-4 w-80 border-red-500'
                 document.getElementById('cnicError').innerHTML = 'Cnic number required';
 
             }else if(userInfo.password === ""){
 
                 const password = document.getElementById('password');
-                password.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80 border-red-500'
+                password.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif mt-1 mb-4 w-80 border-red-500'
                 document.getElementById('passwordError').innerHTML = 'password required'
 
             }else{
@@ -88,13 +88,13 @@ function SignIn() {
    <>
     <Navbar/>
      <div className=' w-[100%] h-[100%] pt-16 pb-16  flex flex-col justify-center items-center'>
-        <div className=' bg-slate-400 rounded-2xl sm:text-end sm:p-4 sm:ml-6 sm:mr-6 text-start mr-7 ml-7 pl-7 '>
+        <div className=' bg-slate-400 rounded-2xl sm:text-end sm:p-4 sm:ml-6 sm:mr-6 text-start mr-7 ml-7 pl-5 '>
            <form onSubmit={formSubmit}>
                 <div className=' mt-6 mb-6 text-center'>
                     <h1 className=' font-extrabold font-mono text-2xl sm:text-3xl '>Login Form</h1>
                 </div>
                
-                 <div>
+                 <div className=' mt-4'>
                     <Label htmlFor={'CnicNumber'} value={'CNIC Number :'}/>
                     <Input
                         type = "number"
@@ -103,11 +103,11 @@ function SignIn() {
                         id={'CnicNumber'}
                         value={userInfo.cardNumber}
                         onChange={handleInput} 
-                        className={'m-4 w-80'}
+                        className={'mt-1 mb-4 w-80'}
                     />
-                    <p className=' text-red-600 ml-6 sm:text-center sm:ml-16' id='cnicError'></p>
+                    <p className=' text-red-600 ml-1 sm:text-center sm:ml-16' id='cnicError'></p>
                 </div>
-                 <div>
+                 <div className=' mt-4'>
                     <Label htmlFor={'password'} value={'Password :'}/>
                     <Input
                         type = "password"
@@ -116,12 +116,12 @@ function SignIn() {
                         id={'password'}
                         value={userInfo.password}
                         onChange={handleInput} 
-                        className={'m-4 w-80'}
+                        className={'mt-1 mb-4 w-80'}
                     />
-                    <p className=' text-red-600 ml-6 sm:ml-10 sm:text-center' id='passwordError'></p>
+                    <p className=' text-red-600 ml-1 sm:ml-10 sm:text-center' id='passwordError'></p>
                 </div>
                 <div className='p-5 text-end'>
-                    <button type='submit' className=' tracking-widest pr-10 pl-10 pt-3 pb-3 rounded-2xl sm:font-extrabold sm:text-xl hover:text-white hover:bg-green-700 bg-blue-700 font-mono'>
+                    <button type='submit' className=' tracking-widest pr-5 pl-5 sm:pr-10 sm:pl-10 pt-3 pb-3 rounded-2xl sm:font-extrabold sm:text-xl text-white hover:bg-green-700 bg-blue-700 font-mono'>
                         sign-In
                     </button>
                 </div>
