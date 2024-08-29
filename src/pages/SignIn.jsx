@@ -55,10 +55,10 @@ function SignIn() {
                         password : ""
                     });
                     
-                    toast.success('User logged In successfully');
                     navigate('/');
                     authentication(response.data);
                     window.location.reload()
+                    toast.success('User logged In successfully');
 
                 };
             };
