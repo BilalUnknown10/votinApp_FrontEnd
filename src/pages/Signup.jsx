@@ -74,8 +74,7 @@ function Signup() {
                         
                         toast.success(response.data.message);
                         authentication(response.data.token)
-                        navigate('/')
-                        window.location.reload();
+                        navigate('/');
 
                  }
            

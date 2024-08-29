@@ -57,9 +57,6 @@ function SignIn() {
                     
                     navigate('/');
                     authentication(response.data);
-                    setTimeout(() => {
-                        window.location.reload()
-                    }, 3000);
                     toast.success('User logged In successfully');
                    
 

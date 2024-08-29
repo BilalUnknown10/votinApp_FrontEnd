@@ -13,6 +13,7 @@ function ContextProvider({children}) {
     const API_URL = "https://vote-app-dun.vercel.app"
 
     const authentication = async (jwtToken) => {
+      setToken(jwtToken)
       return localStorage.setItem('token',jwtToken)
     }
 
