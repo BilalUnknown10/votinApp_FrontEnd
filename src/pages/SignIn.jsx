@@ -57,10 +57,11 @@ function SignIn() {
                     
                     navigate('/');
                     authentication(response.data);
-                    window.location.reload()
                     setTimeout(() => {
-                        toast.success('User logged In successfully');
-                    }, 2000);
+                        window.location.reload()
+                    }, 3000);
+                    toast.success('User logged In successfully');
+                   
 
                 };
             };
