@@ -23,6 +23,14 @@ function SignIn() {
         const name = e.target.name;
         const value = e.target.value;
 
+        const CnicNumber = document.getElementById('CnicNumber');
+        CnicNumber.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80'
+
+        const password = document.getElementById('password');
+        password.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80'
+
+
+
         document.getElementById('cnicError').innerHTML = "";
         document.getElementById('passwordError').innerHTML =  "";
 
@@ -41,9 +49,17 @@ function SignIn() {
         try {
 
             if(userInfo.cardNumber === ""){
+                
+                const CnicNumber = document.getElementById('CnicNumber');
+                CnicNumber.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80 border-red-500'
                 document.getElementById('cnicError').innerHTML = 'Cnic number required';
+
             }else if(userInfo.password === ""){
+
+                const password = document.getElementById('password');
+                password.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80 border-red-500'
                 document.getElementById('passwordError').innerHTML = 'password required'
+
             }else{
 
                 const response = await axios.post(`${API_URL}/voter/login`,userInfo);

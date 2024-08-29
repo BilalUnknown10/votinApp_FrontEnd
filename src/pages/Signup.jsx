@@ -6,6 +6,8 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import UserContext from '../store/UserContext.js'
 import { toast } from 'react-toastify'
+import '../index.css'
+import { ClassNames } from '@emotion/react'
 
 function Signup() {
   
@@ -26,6 +28,21 @@ function Signup() {
     const handleInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
+
+        const clasname = document.getElementById('name');
+        clasname.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80'
+
+        const email = document.getElementById('email');
+        email.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80'
+
+        const CnicNumber = document.getElementById('CnicNumber');
+        CnicNumber.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80'
+
+        const phone = document.getElementById('phone');
+        phone.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80'
+
+        const password = document.getElementById('password');
+        password.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80'
 
         document.getElementById('nameError').innerHTML = "";
         document.getElementById('emailError').innerHTML = "";
@@ -48,16 +65,35 @@ function Signup() {
 
         try {   
            
-            if(userInfo.name === ""){
+            if(userInfo.name === ""){  
+
+                const name = document.getElementById('name');
+                name.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80 border-red-500'
                 document.getElementById('nameError').innerHTML = "name are required"
+
             }else if(userInfo.email === ""){
+
+                const email = document.getElementById('email');
+                email.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80 border-red-500'
                 document.getElementById('emailError').innerHTML = "email are required"
+
             }else if(userInfo.cardNumber === ""){
+                const CnicNumber = document.getElementById('CnicNumber');
+                CnicNumber.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80 border-red-500'
                 document.getElementById('cnicError').innerHTML = "cnic number are required"
+
             }else if(userInfo.phoneNumber === ""){
+
+                const phone = document.getElementById('phone');
+                phone.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80 border-red-500'
                 document.getElementById('phoneError').innerHTML = "phone number are required"
+
             }else if(userInfo.password === ""){
+
+                const password = document.getElementById('password');
+                password.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-5 w-80 border-red-500'
                 document.getElementById('passwordError').innerHTML = "password are required"
+                
             }else{
                 axios.defaults.withCredentials = true;
                 const response = await axios.post(`${API_URL}/voter/registration`, userInfo);
