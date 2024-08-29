@@ -47,7 +47,7 @@ function Votebanner({partyName,chairman,leaderImage,partyFlag}) {
         toast.warn('Choose one options of the following');
        }
         } catch (error) {
-            toast.error(error.response.data);
+            toast.warn(error.response.data);
         }
         
     }
