@@ -30,19 +30,19 @@ function Signup() {
         const value = e.target.value;
 
         const clasname = document.getElementById('name');
-        clasname.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-1 w-80'
+        clasname.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-1 sm:m-2 w-80'
 
         const email = document.getElementById('email');
-        email.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-1 w-80'
+        email.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-1 sm:m-2 w-80'
 
         const CnicNumber = document.getElementById('CnicNumber');
-        CnicNumber.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-1 w-80'
+        CnicNumber.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-1 sm:m-2 w-80'
 
         const phone = document.getElementById('phone');
-        phone.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-1 w-80'
+        phone.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-1 sm:m-2 w-80'
 
         const password = document.getElementById('password');
-        password.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-1 w-80'
+        password.className = 'outline-none border p-3 rounded-lg bg-zinc-100 font-serif m-1 sm:m-2 w-80'
 
         document.getElementById('nameError').innerHTML = "";
         document.getElementById('emailError').innerHTML = "";
@@ -129,8 +129,8 @@ function Signup() {
   return (
    <>
     <Navbar/>
-     <div className=' w-[100%] sm:h-[100%] h-[100%] pt-8 pb-8 flex flex-col justify-center items-center'>
-        <div className=' bg-slate-400 rounded-2xl sm:text-end sm:p-4 sm:ml-6 sm:mr-6 text-start mr-12 ml-12'>
+     <div className=' w-[100%] sm:h-[100%] h-[100%] pt-8 pb-8 flex flex-col justify-center items-center '>
+        <div className=' bg-slate-400 rounded-2xl sm:text-end sm:p-4 sm:ml-6 sm:mr-6 text-start sm:pr-20 mr-12 ml-12'>
            <form onSubmit={formSubmit}>
                 <div className=' mt-6 mb-6 text-center'>
                     <h1 className=' font-extrabold font-mono text-xl sm:text-3xl '>Registration Form</h1>
@@ -144,12 +144,12 @@ function Signup() {
                         id={'name'}
                         value={userInfo.name}
                         onChange={handleInput}
-                        className={'m-1 w-80'}
+                        className={'m-1 sm:m-2 w-80'}
                     />
                      <p className=' text-red-600 ml-6 sm:text-center sm:ml-10' id='nameError'></p>
                 </div>
 
-                <div className='sm:mr-0 mt-3 mb-2 mr-6 ml-6'>
+                <div className='sm:mr-0 sm:m-5 mt-3 mb-2 mr-6 ml-6'>
                     <Label htmlFor={'email'} value={'Email :'}/>
                     <Input
                         type = {"email"}
@@ -158,12 +158,12 @@ function Signup() {
                         id={'email'}
                         value={userInfo.email}
                         onChange={handleInput} 
-                        className={'m-1 w-80'}
+                        className={'m-1 sm:m-2 w-80'}
                     />
                     <p className=' text-red-600 ml-6 sm:text-center sm:ml-10' id='emailError'></p>
                 </div>
 
-                 <div className='sm:mr-0 mt-3 mb-2 mr-6 ml-6'>
+                 <div className='sm:mr-0 sm:m-5 mt-3 mb-2 mr-6 ml-6'>
                     <Label htmlFor={'CnicNumber'} value={'CNIC Number :'}/>
                     <Input
                         type = "number"
@@ -172,11 +172,11 @@ function Signup() {
                         id={'CnicNumber'}
                         value={userInfo.cardNumber}
                         onChange={handleInput} 
-                        className={'m-1 w-80'}
+                        className={'m-1 sm:m-2 w-80'}
                     />
                      <p className=' text-red-600 ml-6 sm:text-center sm:ml-20' id='cnicError'></p>
                 </div>
-                 <div className='sm:mr-0 mt-3 mb-2 mr-6 ml-6'>
+                 <div className='sm:mr-0 sm:m-5 mt-3 mb-2 mr-6 ml-6'>
                     <Label htmlFor={'phone'} value={'Phone Number :'}/>
                     <Input
                         type = "number"
@@ -185,11 +185,11 @@ function Signup() {
                         id={'phone'}
                         value={userInfo.phoneNumber}
                         onChange={handleInput} 
-                        className={'m-1 w-80'}
+                        className={'m-1 sm:m-2 w-80'}
                     />
                     <p className=' text-red-600 sm:ml-24 ml-6 sm:text-center' id='phoneError'></p>
                 </div>
-                 <div className='sm:mr-0 mt-3 mb-2 mr-6 ml-6'>
+                 <div className='sm:mr-0 sm:m-5 mt-3 mb-2 mr-6 ml-6'>
                     <Label htmlFor={'password'} value={'Password :'}/>
                     <Input
                         type = "password"
@@ -198,7 +198,7 @@ function Signup() {
                         id={'password'}
                         value={userInfo.password}
                         onChange={handleInput} 
-                        className={'m-1 w-80'}
+                        className={'m-1 sm:m-2 w-80'}
                     />
                     <p className=' text-red-600 ml-6 sm:text-center sm:ml-20' id='passwordError'></p>
                 </div>

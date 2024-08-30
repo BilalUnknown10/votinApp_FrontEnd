@@ -91,7 +91,7 @@ function SignIn() {
     <Navbar/>
     {loading ? 
      <div className=' w-[100%] h-[100%] pt-16 pb-16  flex flex-col justify-center items-center'>
-        <div className=' bg-slate-400 rounded-2xl sm:text-end sm:p-4 sm:ml-6 sm:mr-6 text-start mr-7 ml-7 pl-5 '>
+        <div className=' bg-slate-400 rounded-2xl sm:text-end sm:p-4 sm:ml-6 sm:mr-6 text-start mr-7 ml-7 pl-5'>
            <form onSubmit={formSubmit}>
                 <div className=' mt-6 mb-6 text-center'>
                     <h1 className=' font-extrabold font-mono text-2xl sm:text-3xl '>Login Form</h1>
