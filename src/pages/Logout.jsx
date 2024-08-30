@@ -5,7 +5,7 @@ import axios from 'axios'
 import {toast} from 'react-toastify'
 function Logout() {
   
-  const {setToken} = useContext(UserContext)
+  const {setToken, API_URL} = useContext(UserContext)
 
   const logOut = async () => {
     try {
