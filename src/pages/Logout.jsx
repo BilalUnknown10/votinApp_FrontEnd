@@ -9,9 +9,10 @@ function Logout() {
 
   const logOut = async () => {
     try {
-      
+
+      const response = await axios.get(`${API_URL}/voter/logOut`);      
       setToken("");
-      toast.success('Logout Successfully');
+      toast.success(response.data);
       return localStorage.removeItem('token')
 
     } catch (error) {
