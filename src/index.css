@@ -11,6 +11,30 @@
   font-size: 1.2rem;
 }
 
-.inputBorder {
-  border: red;
+.main{
+  /* border: 4px solid red; */
+  box-shadow: 1px 4px 2px rgb(229, 142, 142);
+  width:150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 50%;
+  background-color: rgb(39, 114, 39);
+  animation: ani 0.1s infinite alternate-reverse;
+  
+  
+  color: white;
+}
+
+@keyframes ani {
+  from{
+    transform: rotate(0deg);
+    /* width: 0px ; */
+  }
+  to{
+    transform: rotate(360deg);
+    /* width: 200px; */
+  }
 }

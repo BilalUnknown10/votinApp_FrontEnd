@@ -16,7 +16,7 @@ function SignIn() {
     
     const navigate = useNavigate()
 
-    const {API_URL, authentication} = useContext(UserContext)
+    const {API_URL, authentication, loading, setLoading} = useContext(UserContext)
   
 
      const handleInput = (e) => {
@@ -62,24 +62,26 @@ function SignIn() {
 
             }else{
 
+                setLoading(false)
                 const response = await axios.post(`${API_URL}/voter/login`,userInfo);
-                
+                 console.log(response)
                 if(response.status === 200){
+
+                    setLoading(true)
                     
                     setUerInfo({
                         cardNumber : "",
                         password : ""
                     });
                     
+                    toast.success(response.data.message);
+                    authentication(response.data.token);
                     navigate('/');
-                    authentication(response.data);
-                    toast.success('User logged In successfully');
-                   
-
-                };
+                }
             };
             
         } catch (error) {
+            setLoading(true)
             toast.error(error.response.data);
         };
     };
@@ -87,6 +89,7 @@ function SignIn() {
   return (
    <>
     <Navbar/>
+    {loading ? 
      <div className=' w-[100%] h-[100%] pt-16 pb-16  flex flex-col justify-center items-center'>
         <div className=' bg-slate-400 rounded-2xl sm:text-end sm:p-4 sm:ml-6 sm:mr-6 text-start mr-7 ml-7 pl-5 '>
            <form onSubmit={formSubmit}>
@@ -127,7 +130,15 @@ function SignIn() {
                 </div>
            </form>
         </div>
-    </div>
+    </div> : <> 
+        <div className=' w-[100vw] h-[70vh] sm:h-[90vh] flex justify-center items-center'>
+            <h1 className=' font-mono font-extrabold text-3xl main '>
+            loading..
+            </h1>
+        </div>
+    </>
+    }
+
    </>
   )
 }

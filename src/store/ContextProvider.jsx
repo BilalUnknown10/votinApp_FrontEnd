@@ -6,7 +6,7 @@ function ContextProvider({children}) {
 
    
     const [token, setToken] = useState(localStorage.getItem('token'));
-    const [loading, setLoading] = useState('Loading...')
+    const [loading, setLoading] = useState(true)
     const [user, setUser] = useState('')
 
     const isLoggedIn = !!token
@@ -46,7 +46,7 @@ function ContextProvider({children}) {
  },[user,isLoggedIn,token])
 
   return (
-    <UserContext.Provider value={{ isLoggedIn, user, setToken,token, API_URL, authentication }}>
+    <UserContext.Provider value={{ isLoggedIn, loading, setLoading, user, setToken,token, API_URL, authentication }}>
       {children}
     </UserContext.Provider>
   )
