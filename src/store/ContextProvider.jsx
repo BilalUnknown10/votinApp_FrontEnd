@@ -6,6 +6,7 @@ function ContextProvider({children}) {
 
    
     const [token, setToken] = useState(localStorage.getItem('token'));
+    const [loading, setLoading] = useState('Loading...')
     const [user, setUser] = useState('')
 
     const isLoggedIn = !!token
@@ -26,7 +27,12 @@ function ContextProvider({children}) {
             'Content-Type' : 'application/json',
             'Authorization' : `Bearer ${token}`
           }});
-          setUser(response.data);
+
+          if(response.status === 200){
+            setUser(response.data);
+          }else{
+            console.log(loading)
+          }
         };
         
       } catch (error) {
